@@ -1,0 +1,226 @@
+[
+    {
+        "model": "database.Genre",
+        "pk": 1,
+        "fields": {
+            "title": "Аниме"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 2,
+        "fields": {
+            "title": "Биографический"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 3,
+        "fields": {
+            "title": "Боевик"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 4,
+        "fields": {
+            "title": "Вестерн"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 5,
+        "fields": {
+            "title": "Военный"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 6,
+        "fields": {
+            "title": "Детектив"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 7,
+        "fields": {
+            "title": "Детский"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 8,
+        "fields": {
+            "title": "Документальный"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 9,
+        "fields": {
+            "title": "Драма"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 10,
+        "fields": {
+            "title": "Исторический"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 11,
+        "fields": {
+            "title": "Кинокомикс"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 12,
+        "fields": {
+            "title": "Комедия"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 13,
+        "fields": {
+            "title": "Концерт"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 14,
+        "fields": {
+            "title": "Короткометражный"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 15,
+        "fields": {
+            "title": "Криминал"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 16,
+        "fields": {
+            "title": "Мелодрама"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 17,
+        "fields": {
+            "title": "Мистика"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 18,
+        "fields": {
+            "title": "Музыка"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 19,
+        "fields": {
+            "title": "Мультфильм"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 20,
+        "fields": {
+            "title": "Мюзикл"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 21,
+        "fields": {
+            "title": "Научный"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 22,
+        "fields": {
+            "title": "Нуар"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 23,
+        "fields": {
+            "title": "Приключения"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 24,
+        "fields": {
+            "title": "Реалити-шоу"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 25,
+        "fields": {
+            "title": "Семейный"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 26,
+        "fields": {
+            "title": "Спорт"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 27,
+        "fields": {
+            "title": "Ток-шоу"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 28,
+        "fields": {
+            "title": "Триллер"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 29,
+        "fields": {
+            "title": "Ужасы"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 30,
+        "fields": {
+            "title": "Фантастика"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 31,
+        "fields": {
+            "title": "Фэнтези"
+        }
+    },
+    {
+        "model": "database.Genre",
+        "pk": 32,
+        "fields": {
+            "title": "Эротика"
+        }
+    }
+]
