@@ -12,7 +12,6 @@ class FilmsSerializer(serializers.ModelSerializer):
         model = Film
         fields = ('url', 'title', 'year', 'average_rating')
 
-    
     def get_url(self, obj):
         return f"{settings.HOST}/api/films/{obj.id}"
 

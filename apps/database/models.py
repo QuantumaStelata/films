@@ -16,12 +16,20 @@ class Film(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = 'Фильм'
+        verbose_name_plural = 'Фильмы'
+
 class Actor(models.Model):
     name = models.CharField(verbose_name = 'Имя', max_length = 255)
     surname = models.CharField(verbose_name = 'Фамилия', max_length = 255)
 
     def __str__(self):
         return f"{self.name} {self.surname}"
+
+    class Meta:
+        verbose_name = 'Актер'
+        verbose_name_plural = 'Актеры'
         
 class Genre(models.Model):
     title = models.CharField(verbose_name = 'Жанр', max_length = 50, unique = True)
@@ -29,6 +37,10 @@ class Genre(models.Model):
 
     def __str__(self):
         return self.title
+    
+    class Meta:
+        verbose_name = 'Жанр'
+        verbose_name_plural = 'Жанры'
         
 
 class Comment(models.Model):
@@ -42,6 +54,10 @@ class Comment(models.Model):
     def __str__(self):
         return f"{self.film} - {self.ip}"
 
+    class Meta:
+        verbose_name = 'Комментарий'
+        verbose_name_plural = 'Комментарии'
+
 class Rating(models.Model):
     GRADES = ((1, 1), (2, 2), (3, 3), (4, 4), (5, 5),
               (6, 6), (7, 7), (8, 8), (9, 9), (10, 10))
@@ -52,6 +68,8 @@ class Rating(models.Model):
     ip = models.GenericIPAddressField(verbose_name = 'IP отправителя')
 
     class Meta:
+        verbose_name = 'Оценка'
+        verbose_name_plural = 'Оценки'
         unique_together = ('film', 'ip')
 
     def __str__(self):
