@@ -27,6 +27,7 @@ SECRET_KEY = 'django-insecure-*hsa^!1olu*wjp15blil(s83@e6@%brj-2#xtp-izowul+=kmz
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+HOST = "http://127.0.0.1:8000"
 
 
 # Application definition
@@ -39,7 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'apps.database'
+    'rest_framework',
+
+    'apps.database',
+    'apps.api'
 ]
 
 MIDDLEWARE = [
