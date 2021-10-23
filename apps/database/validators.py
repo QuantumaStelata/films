@@ -6,3 +6,6 @@ def photo_validator(value):
     valid_extensions = ['.jpg', '.png']
     if not ext.lower() in valid_extensions:
         raise ValidationError('Неподдерживаемый формат файла')
+
+def file_validator(instance, filename):
+    return f'films/{instance.title}/{filename}'

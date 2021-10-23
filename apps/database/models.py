@@ -1,15 +1,17 @@
 from django.db import models
 
-from .validators import photo_validator
+from .validators import photo_validator, file_validator
 
 class Film(models.Model):
     title = models.CharField(verbose_name = 'Название', max_length = 255)
-    photo = models.FileField(verbose_name = 'Баннер', upload_to = 'films/', validators = [photo_validator])
+    photo = models.FileField(verbose_name = 'Баннер', upload_to = file_validator, validators = [photo_validator])
+    year = models.IntegerField(verbose_name = 'Год премьеры')
     description = models.TextField(verbose_name = 'Описание')
-    actors = models.ManyToManyField('Actor', verbose_name = 'Фильмы', related_name = 'films', blank = True)
+    actors = models.ManyToManyField('Actor', verbose_name = 'Актеры', related_name = 'films', blank = True)
     genres = models.ManyToManyField('Genre', verbose_name = 'Жанры', related_name = 'films', blank = True)
-
     average_rating = models.FloatField(verbose_name = 'Средняя оценка', blank = True, null = True)
+    date_create = models.DateTimeField(verbose_name = 'Дата добавления', auto_now_add = True)
+    is_delete = models.BooleanField(verbose_name = 'Удалено?', default = False)
 
     def __str__(self):
         return self.title
@@ -31,6 +33,7 @@ class Genre(models.Model):
 
 class Comment(models.Model):
     film = models.ForeignKey('Film', verbose_name = 'Фильм', related_name = 'comments', on_delete = models.CASCADE)
+    parent_comment = models.ForeignKey('Comment', verbose_name = 'Родительский комментарий', related_name = 'child_comments', on_delete = models.CASCADE, blank = True, null = True)
     name = models.CharField(verbose_name = 'Имя', max_length = 255)
     text = models.CharField(verbose_name = 'Текст', max_length = 255)
     ip = models.GenericIPAddressField(verbose_name = 'IP отправителя')
@@ -63,6 +66,4 @@ class Rating(models.Model):
         average_rating = round(sum(grades) / len(grades), 2)
         self.film.average_rating = average_rating
         self.film.save()
-        
-        
         
