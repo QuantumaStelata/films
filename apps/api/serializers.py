@@ -21,17 +21,7 @@ class FilmsSerializer(serializers.ModelSerializer):
             return "No data"
 
         return obj.average_rating
-        
 
-class ActorsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Actor
-        exclude = ('id',)
-
-class GenresSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Genre
-        exclude = ('id', 'color')
 
 class FilmDetailSerializer(serializers.ModelSerializer):
     actors = serializers.SerializerMethodField()
@@ -65,3 +55,53 @@ class FilmDetailSerializer(serializers.ModelSerializer):
             return "No data"
 
         return obj.average_rating
+
+
+class GenresSerializer(serializers.ModelSerializer):
+    url = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Genre
+        fields = ('url', 'title')
+
+    def get_url(self, obj):
+        return f"{settings.HOST}/api/genres/{obj.id}"
+
+class GenreDetailSerializer(serializers.ModelSerializer):
+    films = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Genre
+        fields = ('title', 'films')
+
+    def get_films(self, obj):
+        if obj.films.all().exists():
+            response = FilmsSerializer(instance = obj.films, read_only = True, many = True)
+            return response.data
+
+        return "No data"
+
+
+class ActorsSerializer(serializers.ModelSerializer):
+    url = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Actor
+        fields = ('url', 'name', 'surname')
+
+    def get_url(self, obj):
+        return f"{settings.HOST}/api/actors/{obj.id}"
+
+class ActorDetailSerializer(serializers.ModelSerializer):
+    films = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Actor
+        fields = ('name', 'surname', 'films')
+
+    def get_films(self, obj):
+        if obj.films.all().exists():
+            response = FilmsSerializer(instance = obj.films, read_only = True, many = True)
+            return response.data
+
+        return "No data"
