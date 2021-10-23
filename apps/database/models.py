@@ -4,7 +4,7 @@ from .validators import photo_validator, file_validator
 
 class Film(models.Model):
     title = models.CharField(verbose_name = 'Название', max_length = 255)
-    photo = models.FileField(verbose_name = 'Баннер', upload_to = file_validator, validators = [photo_validator])
+    banner = models.FileField(verbose_name = 'Баннер', upload_to = file_validator, validators = [photo_validator])
     year = models.IntegerField(verbose_name = 'Год премьеры')
     description = models.TextField(verbose_name = 'Описание')
     actors = models.ManyToManyField('Actor', verbose_name = 'Актеры', related_name = 'films', blank = True)
