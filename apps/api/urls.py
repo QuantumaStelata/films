@@ -1,10 +1,14 @@
 from django.urls import path
-from .views import FilmsViewSet, FilmDetailViewSet, \
-                   GenresViewSet, GenreDetailViewSet, \
-                   ActorsViewSet, ActorDetailViewSet
 
+from .views import ApiViewSet, \
+                   FilmsViewSet, FilmDetailViewSet, \
+                   GenresViewSet, GenreDetailViewSet, \
+                   ActorsViewSet, ActorDetailViewSet, \
+                   RatingViewSet
 
 urlpatterns = [
+    path('', ApiViewSet.as_view(), name='api'),
+
     path('films/', FilmsViewSet.as_view(), name='api-films'),
     path('films/<str:pk>/', FilmDetailViewSet.as_view(), name='api-film-detail'),
 
@@ -13,4 +17,6 @@ urlpatterns = [
     
     path('actors/', ActorsViewSet.as_view(), name='api-actors'),
     path('actors/<str:pk>/', ActorDetailViewSet.as_view(), name='api-actors-detail'),
+
+    path('rating/<str:pk_film>/', RatingViewSet.as_view(), name='api-rating'),
 ]

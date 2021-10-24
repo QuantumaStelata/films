@@ -64,7 +64,7 @@ class Rating(models.Model):
 
 
     film = models.ForeignKey('Film', verbose_name = 'Фильм', on_delete = models.CASCADE, related_name = 'grades')
-    grade = models.IntegerField(verbose_name = 'Оценка', choices = GRADES)
+    grade = models.IntegerField(verbose_name = 'Оценка', choices = GRADES, default = 1)
     ip = models.GenericIPAddressField(verbose_name = 'IP отправителя')
 
     class Meta:
