@@ -30,13 +30,17 @@
             </a>
         {% endfor %}
     </div>
+    <div class="info">
+        {% block info %}
+        {% endblock %}
+    </div>
     <div class="container-content">
         {% block content %}
         {% endblock %}
         <div class="container-genres">
             <h2 style="margin: 5%;">Жанры</h2>
             {% for genre in all_genres %}
-                <a href="" class="genres" style="background-color: {{genre.color}}2F;">{{genre.title}}</a>
+                <a href="{% url 'genre' genre.id %}" class="genres" style="background-color: {{genre.color}}2F;">{{genre.title}}</a>
             {% endfor %}
         </div>
     </div>

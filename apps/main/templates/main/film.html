@@ -22,7 +22,7 @@
                     <p style="line-height: 35px;">
                         {% if film.genres.all %}
                             {% for genre in film.genres.all %}
-                                <a href="" style="background-color: {{genre.color}}5F; border-radius: 25px; padding: 5px 5px;">{{genre.title}}</a>
+                                <a href="{% url 'genre' genre.id %}" style="background-color: {{genre.color}}5F; border-radius: 25px; padding: 5px 5px;">{{genre.title}}</a>
                            {% endfor %}
                         {% else %}
                             -
@@ -36,7 +36,7 @@
                     <p>
                         {% if film.actors.all %}
                             {% for actor in film.actors.all %}
-                                <a href="">{{actor}},</a>
+                                <a href="{% url 'actor' actor.id %}">{{actor}},</a>
                             {% endfor %}
                         {% else %}
                             -

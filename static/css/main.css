@@ -82,9 +82,22 @@ footer div {
     align-items: center;
     justify-content: space-around;
     width: 50vw;
-    height: 25vh;
+    height: 25.5vh;
     background-color: #282828;
     margin-bottom: 3px;
+}
+
+.info {
+    width: 75%;
+    background-color: #282828;
+    padding-right: 25%;
+    margin-bottom: 3px;
+}
+
+.info h3 {
+    text-align: center;
+    border-right: 1px solid #555555;
+    padding: 0.5%;
 }
 
 .container-recommendations .container-recommendations-film {
@@ -92,7 +105,7 @@ footer div {
     flex-direction: column;
     align-items: center;
     width: 9vw;
-    margin: 0 0.5vw;
+    margin: 5% 0.5vw;
     height: 24vh;
     border: 1px solid #555555;
     border-radius: 10px;
