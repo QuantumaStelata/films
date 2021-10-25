@@ -1,4 +1,5 @@
 import json
+import random
 
 START_PK = 1
 MODEL = 'database.Genre'
@@ -18,7 +19,8 @@ for pk, genre in enumerate(tpl, START_PK):
         "model": MODEL,
         "pk": pk,
         "fields" : {
-            "title": genre.capitalize()
+            "title": genre.capitalize(),
+            "color": "#"+"".join([random.choice('0123456789ABCDEF') for _ in range(6)])
             }   
         }
 

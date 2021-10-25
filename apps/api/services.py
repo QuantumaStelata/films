@@ -3,5 +3,5 @@ def is_int(obj):
     try:
         obj = int(obj)
         return obj
-    except ValueError:
+    except (ValueError, TypeError):
         return False

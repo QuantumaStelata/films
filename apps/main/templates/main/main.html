@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Фильмы{% endblock %}
+
+{% block content %}
+<div class="container-new-films">
+    {% for film in films %}
+    <a href="{% url 'film' film.id %}" class="container-new-film">
+        <div class="film-banner" style="background-image: url('{{film.banner.url}}');"></div>
+        <p style="text-align: center; margin: 5px; height: 10%;">{{film.title}}</p>
+        <div class="film-stat">
+            {% if not film.average_rating %}
+                <p style="font-size: 12px;">Оцените фильм первым!</p>
+            {% else %}
+                {% for star in film.average_rating|get_count_on_stars %}
+                    <img src="{% static 'img/rating_on.png' %}" width="16px">
+                {% endfor %}
+                {% for star in film.average_rating|get_count_half_stars %}
+                    <img src="{% static 'img/rating_half.png' %}" width="16px">
+                {% endfor %}
+                {% for star in film.average_rating|get_count_off_stars %}
+                    <img src="{% static 'img/rating_off.png' %}" width="16px">
+                {% endfor %}
+            {% endif %}
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}

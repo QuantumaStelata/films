@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 
 from django.shortcuts import get_object_or_404
 
-from apps.database.models import Film, Actor, Genre, Rating
+from apps.database.models import Film, Actor, Genre, Rating, Comment
 from .serializers import FilmsSerializer, FilmDetailSerializer, \
                          GenresSerializer, GenreDetailSerializer, \
                          ActorsSerializer, ActorDetailSerializer
@@ -11,6 +11,7 @@ from .serializers import FilmsSerializer, FilmDetailSerializer, \
 from django.conf import settings
 
 from .services import is_int
+from django.utils import formats
 
 class ApiViewSet(APIView):
     def get(self, request):
@@ -19,6 +20,11 @@ class ApiViewSet(APIView):
             "actors": f"{settings.HOST}/api/actors",
             "genres": f"{settings.HOST}/api/genres"
         }
+
+        if not request.user.is_anonymous:
+            data['ratings'] = f"{settings.HOST}/api/ratings"
+            data['comments'] = f"{settings.HOST}/api/comments"
+
         return Response(data)
 
 class FilmsViewSet(APIView):
@@ -58,8 +64,9 @@ class ActorDetailViewSet(APIView):
         return Response(serializer.data)
 
 class RatingViewSet(APIView):
-    def post(self, request, pk_film):
-        film = get_object_or_404(Film, pk = pk_film)
+    def post(self, request):
+        pk = request.data.get('id')
+        film = get_object_or_404(Film, pk = pk)
         grade = is_int(request.data.get('grade'))
         ip = request.META['REMOTE_ADDR']
         
@@ -69,8 +76,37 @@ class RatingViewSet(APIView):
                 rate.grade = grade
                 rate.save()
 
-                return Response({'status': 'ok'})
+                film = get_object_or_404(Film, pk = pk)
+
+                new_avarage_rating = film.average_rating
+                new_ratings_count = film.grades.all().count()
+
+                return Response({'status': 'ok', 'new_avarage_rating': new_avarage_rating, 'new_ratings_count': new_ratings_count})
 
             return Response({'status': 'error', 'message': 'grade less than 1 or more than 10'})
         
         return Response({'status': 'error', 'message': 'grade not integer'})
+
+class CommentViewSet(APIView):
+    def post(self, request):
+        pk = request.data.get('id')
+        film = get_object_or_404(Film, pk = pk)
+        name = request.data.get('name')
+        text = request.data.get('text')
+        ip = request.META['REMOTE_ADDR']
+        
+        if name and text:
+            if len(name) <= 255 and len(text) <= 255:
+                comment = Comment.objects.create(film = film, name = name, text = text, ip = ip)
+
+                # Formating
+                get_date = formats.date_format(comment.date_create, format="DATE_FORMAT", use_l10n=True)
+                get_time = formats.date_format(comment.date_create, format="TIME_FORMAT", use_l10n=True)
+
+                date_create = f"{get_date} {get_time}"
+
+                return Response({'status': 'ok', 'date_create': date_create})
+
+            return Response({'status': 'error', 'message': 'length name or text is longer than 255 symbols'})
+        
+        return Response({'status': 'error', 'message': 'not found name or text'})

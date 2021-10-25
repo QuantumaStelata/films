@@ -1,0 +1,229 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{film.title}}{% endblock %}
+
+{% block content %}
+<div class="container-film" id="container-film">
+    <div class="film-detail">
+        <div class="film-banner" style="background-image: url('{{film.banner.url}}');"></div>
+        <div class=" film-description">
+            <div class="description">
+                <p style="width: 40%;">Название</p>
+                <p style="width: 60%; font-weight: bold;">{{film.title}}</p>
+            </div>
+            <div class="description">
+                <p style="width: 40%;">Год</p>
+                <p style="width: 60%;">{{film.year}}</p>
+            </div>
+            <div class="description">
+                <p style="width: 40%;">Жанр</p>
+                <div style="width: 60%;">
+                    <p style="line-height: 35px;">
+                        {% if film.genres.all %}
+                            {% for genre in film.genres.all %}
+                                <a href="" style="background-color: {{genre.color}}5F; border-radius: 25px; padding: 5px 5px;">{{genre.title}}</a>
+                           {% endfor %}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </p> 
+                </div>
+            </div>
+            <div class="description" style="border-bottom: 0px solid #555555;">
+                <p style="width: 40%;">Актеры</p>
+                <div style="width: 60%;">
+                    <p>
+                        {% if film.actors.all %}
+                            {% for actor in film.actors.all %}
+                                <a href="">{{actor}},</a>
+                            {% endfor %}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="description-container">
+        <h3 style="margin-top: 15px; margin-left: 10px;">Описание:</h3>
+        <p style="margin: 15px 10px; word-wrap: break-word;">{{film.description}}</p>
+    </div>
+    <div class="rating-container">
+        <div class="start-container" id="star-container">
+            {% if not film.average_rating %}
+                {% for star in film.average_rating|get_count_off_stars %}
+                    <img src="{% static 'img/rating_off.png' %}" width="50px" id="star" data="{{star}}">
+                {% endfor %}
+            {% else %}
+                {% for star in film.average_rating|get_count_on_stars %}
+                    <img src="{% static 'img/rating_on.png' %}" width="50px" id="star" data="{{star}}">
+                {% endfor %}
+                {% for star in film.average_rating|get_count_half_stars %}
+                    <img src="{% static 'img/rating_half.png' %}" width="50px" id="star" data="{{star}}">
+                {% endfor %}
+                {% for star in film.average_rating|get_count_off_stars %}
+                    <img src="{% static 'img/rating_off.png' %}" width="50px" id="star" data="{{star}}">
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="rating">
+            <h4 id="rate">Рейтинг фильма: {% if film.average_rating %}{{film.average_rating}}{% else %}-{% endif %}</h4>
+            <p id="count_rate" style="margin-top: 5px; font-size: 14px;">Всего проголосовали: {{film.grades.all.count}}</p>
+        </div>
+    </div>
+    {% if film.film %}
+        <video width="98%" height="400" style="margin: 1% 1%; background-color: #383838;" controls poster="{{film.banner.url}}">
+            <source src="{{film.film.url}}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+            Тег video не поддерживается вашим браузером. 
+        </video>
+        <div class="comments-container">
+            <h3 style="margin-top: 15px; margin-left: 10px;">Комментарии</h3>
+            <form action="#form" id='form'>
+                <input type="text" placeholder="Имя" required maxlength="255" id='comment-name' name="input">
+                <textarea placeholder="Комментарий" required maxlength="255" id='comment-text' name="input"></textarea>
+                <input type="submit" id='comment-submit'>
+            </form>
+        </div>
+        {% if film.comments.all %}
+            {% for comment in film.comments.all %}
+                <div class="comment" id='comment'>
+                    {% if comment.ip == request|get_ip %}
+                    <h3 style="margin: 15px 10px 0px">&#128590 {{comment.name}}</h3>
+                    {% else %}
+                        <h3 style="margin: 15px 10px 0px">{{comment.name}} &#128173</h3>
+                    {% endif %}
+                    <p style="margin: 0px 10px 15px; font-size: 12px; color: #888888;">{{comment.date_create}}</p>
+                    <p style="margin: 0px 10px 15px; word-wrap: break-word;">{{comment.text}}</p>
+
+                </div>
+            {% endfor %}
+        {% else %}
+            <h2 id='no-coments' style="margin: 1% 1%; display: flex; justify-content: center; align-items: center; color: #F00; background-color: #383838; height: 10vh;">Оставьте первый комментарий!</h2>
+        {% endif %}
+    {% endif %}
+</div>
+
+<script>
+    // Меняем оценку
+    $("body").on("click", "#star", function(){
+        var grade = $(this).attr("data");
+
+        $.ajax({
+            method: "POST",
+            url:'http://{{request.META.HTTP_HOST}}/api/ratings/',
+            data: {"id": {{film.id}}, "grade": grade, "csrfmiddlewaretoken": "{{ csrf_token }}"},
+            cache: false,
+            success: function(response) {
+                var new_rate = Object.values(response)[1]
+                var new_rate_count = Object.values(response)[2]
+                
+                // Изменяем рейтинг фильма
+                var element = document.getElementById("rate");
+                element.innerHTML = "Рейтинг фильма: " + new_rate.toFixed(1);
+                
+                // Изменяем кол-во проголосовавших
+                var element = document.getElementById("count_rate");
+                element.innerHTML = "Всего проголосовали: " + new_rate_count;
+
+                // Удаляем все звезды
+                var div = document.getElementById('star-container');
+                div.innerHTML = '';
+
+                // Возвращаем звезды назад
+                var on_stars = parseInt(new_rate)
+                var half_stars = new_rate % on_stars
+                var off_stars = parseInt(10 - on_stars - half_stars)
+               
+                for (var i = 1; i <= on_stars; i++){
+                    var newstar = document.createElement('img');
+                    newstar.src = "{% static 'img/rating_on.png' %}"
+                    newstar.id = "star"
+                    newstar.width = "50"
+                    newstar.setAttribute('data', i)
+                    div.appendChild(newstar);
+                }
+
+                if (half_stars){
+                    var newstar = document.createElement('img');
+                    newstar.src = "{% static 'img/rating_half.png' %}"
+                    newstar.id = "star"
+                    newstar.width = "50"
+                    newstar.setAttribute('data', on_stars + 1)
+                    div.appendChild(newstar);
+                }
+
+                for (var i = 10  + 1 - off_stars; i <= 10; i++){
+                    var newstar = document.createElement('img');
+                    newstar.src = "{% static 'img/rating_off.png' %}"
+                    newstar.id = "star"
+                    newstar.width = "50"
+                    newstar.setAttribute('data', i)
+                    div.appendChild(newstar);
+                }
+            }
+        }); 
+    });
+</script>
+
+<script>
+    // Добавляем комменты
+    $("body").on("click", "#comment-submit", function(e){
+        e.preventDefault();
+        var name = document.getElementById('comment-name').value;
+        var text = document.getElementById('comment-text').value;
+
+        $('input[name="input"').filter(function(){
+                return $(this).toggleClass('input-empty', !this.value)
+            });
+            $('textarea[name="input"').filter(function(){
+                return $(this).toggleClass('input-empty', !this.value)
+            });
+
+        if (name && text) {                      
+            $.ajax({
+                method: "POST",
+                url:'http://{{request.META.HTTP_HOST}}/api/comments/',
+                data: {"id": {{film.id}}, "name": name, "text": text, "csrfmiddlewaretoken": "{{ csrf_token }}"},
+                cache: false,
+                success: function(response) {
+                    var status = Object.values(response)[0]
+
+                    if (status == 'ok') {
+                        var date_create = Object.values(response)[1] 
+                        
+                        // Удаляем надпись если нет комментариев
+                        var no_com = document.getElementById('no-coments');
+                        if (no_com) {no_com.remove()}
+                        
+                        // Создаем контейнер коммента
+                        var cont = document.getElementById('container-film');
+                        var com = document.getElementById('comment')
+                        var div = document.createElement('div');
+                        div.setAttribute('class', 'comment')
+                        div.setAttribute('id', 'comment')
+                        cont.insertBefore(div, com)
+
+                        // Добавляем имя, время и текст коммента в контейнер
+                        var h3 = document.createElement('h3')
+                        h3.innerHTML = '&#128590 ' + name
+                        h3.setAttribute('style', 'margin: 15px 10px 0px')
+                        div.appendChild(h3)
+
+                        var p = document.createElement('p')
+                        p.innerHTML = date_create
+                        p.setAttribute('style', 'margin: 0px 10px 15px; font-size: 12px; color: #888888;')
+                        div.appendChild(p)
+                        
+                        var p = document.createElement('p')
+                        p.innerHTML = text
+                        p.setAttribute('style', 'margin: 0px 10px 15px; word-wrap: break-word;')
+                        div.appendChild(p)
+                        }
+                    }
+                });
+        }
+    });
+</script>
+{% endblock %}

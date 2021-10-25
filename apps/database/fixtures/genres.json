@@ -3,224 +3,256 @@
         "model": "database.Genre",
         "pk": 1,
         "fields": {
-            "title": "Аниме"
+            "title": "Аниме",
+            "color": "#F1A4FF"
         }
     },
     {
         "model": "database.Genre",
         "pk": 2,
         "fields": {
-            "title": "Биографический"
+            "title": "Биографический",
+            "color": "#E86662"
         }
     },
     {
         "model": "database.Genre",
         "pk": 3,
         "fields": {
-            "title": "Боевик"
+            "title": "Боевик",
+            "color": "#A42E12"
         }
     },
     {
         "model": "database.Genre",
         "pk": 4,
         "fields": {
-            "title": "Вестерн"
+            "title": "Вестерн",
+            "color": "#4D3BC3"
         }
     },
     {
         "model": "database.Genre",
         "pk": 5,
         "fields": {
-            "title": "Военный"
+            "title": "Военный",
+            "color": "#D3BB71"
         }
     },
     {
         "model": "database.Genre",
         "pk": 6,
         "fields": {
-            "title": "Детектив"
+            "title": "Детектив",
+            "color": "#D2FAC3"
         }
     },
     {
         "model": "database.Genre",
         "pk": 7,
         "fields": {
-            "title": "Детский"
+            "title": "Детский",
+            "color": "#71727D"
         }
     },
     {
         "model": "database.Genre",
         "pk": 8,
         "fields": {
-            "title": "Документальный"
+            "title": "Документальный",
+            "color": "#D4F3F4"
         }
     },
     {
         "model": "database.Genre",
         "pk": 9,
         "fields": {
-            "title": "Драма"
+            "title": "Драма",
+            "color": "#8C3333"
         }
     },
     {
         "model": "database.Genre",
         "pk": 10,
         "fields": {
-            "title": "Исторический"
+            "title": "Исторический",
+            "color": "#5E3E71"
         }
     },
     {
         "model": "database.Genre",
         "pk": 11,
         "fields": {
-            "title": "Кинокомикс"
+            "title": "Кинокомикс",
+            "color": "#908A06"
         }
     },
     {
         "model": "database.Genre",
         "pk": 12,
         "fields": {
-            "title": "Комедия"
+            "title": "Комедия",
+            "color": "#EC01DA"
         }
     },
     {
         "model": "database.Genre",
         "pk": 13,
         "fields": {
-            "title": "Концерт"
+            "title": "Концерт",
+            "color": "#9B0D73"
         }
     },
     {
         "model": "database.Genre",
         "pk": 14,
         "fields": {
-            "title": "Короткометражный"
+            "title": "Короткометражный",
+            "color": "#2B32B4"
         }
     },
     {
         "model": "database.Genre",
         "pk": 15,
         "fields": {
-            "title": "Криминал"
+            "title": "Криминал",
+            "color": "#9AFE7D"
         }
     },
     {
         "model": "database.Genre",
         "pk": 16,
         "fields": {
-            "title": "Мелодрама"
+            "title": "Мелодрама",
+            "color": "#366799"
         }
     },
     {
         "model": "database.Genre",
         "pk": 17,
         "fields": {
-            "title": "Мистика"
+            "title": "Мистика",
+            "color": "#E67FEF"
         }
     },
     {
         "model": "database.Genre",
         "pk": 18,
         "fields": {
-            "title": "Музыка"
+            "title": "Музыка",
+            "color": "#87194E"
         }
     },
     {
         "model": "database.Genre",
         "pk": 19,
         "fields": {
-            "title": "Мультфильм"
+            "title": "Мультфильм",
+            "color": "#A307E5"
         }
     },
     {
         "model": "database.Genre",
         "pk": 20,
         "fields": {
-            "title": "Мюзикл"
+            "title": "Мюзикл",
+            "color": "#DD8E76"
         }
     },
     {
         "model": "database.Genre",
         "pk": 21,
         "fields": {
-            "title": "Научный"
+            "title": "Научный",
+            "color": "#0A650B"
         }
     },
     {
         "model": "database.Genre",
         "pk": 22,
         "fields": {
-            "title": "Нуар"
+            "title": "Нуар",
+            "color": "#175BF0"
         }
     },
     {
         "model": "database.Genre",
         "pk": 23,
         "fields": {
-            "title": "Приключения"
+            "title": "Приключения",
+            "color": "#7AA139"
         }
     },
     {
         "model": "database.Genre",
         "pk": 24,
         "fields": {
-            "title": "Реалити-шоу"
+            "title": "Реалити-шоу",
+            "color": "#B19D6E"
         }
     },
     {
         "model": "database.Genre",
         "pk": 25,
         "fields": {
-            "title": "Семейный"
+            "title": "Семейный",
+            "color": "#D6C945"
         }
     },
     {
         "model": "database.Genre",
         "pk": 26,
         "fields": {
-            "title": "Спорт"
+            "title": "Спорт",
+            "color": "#A8352D"
         }
     },
     {
         "model": "database.Genre",
         "pk": 27,
         "fields": {
-            "title": "Ток-шоу"
+            "title": "Ток-шоу",
+            "color": "#700C02"
         }
     },
     {
         "model": "database.Genre",
         "pk": 28,
         "fields": {
-            "title": "Триллер"
+            "title": "Триллер",
+            "color": "#CDE34B"
         }
     },
     {
         "model": "database.Genre",
         "pk": 29,
         "fields": {
-            "title": "Ужасы"
+            "title": "Ужасы",
+            "color": "#422DB2"
         }
     },
     {
         "model": "database.Genre",
         "pk": 30,
         "fields": {
-            "title": "Фантастика"
+            "title": "Фантастика",
+            "color": "#234052"
         }
     },
     {
         "model": "database.Genre",
         "pk": 31,
         "fields": {
-            "title": "Фэнтези"
+            "title": "Фэнтези",
+            "color": "#1360CC"
         }
     },
     {
         "model": "database.Genre",
         "pk": 32,
         "fields": {
-            "title": "Эротика"
+            "title": "Эротика",
+            "color": "#D7BFDA"
         }
     }
 ]

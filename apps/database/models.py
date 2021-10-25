@@ -1,12 +1,13 @@
 from django.db import models
 
-from .validators import photo_validator, file_validator
+from .validators import photo_validator, file_validator, video_validator
 
 class Film(models.Model):
     title = models.CharField(verbose_name = 'Название', max_length = 255)
     banner = models.FileField(verbose_name = 'Баннер', upload_to = file_validator, validators = [photo_validator])
     year = models.IntegerField(verbose_name = 'Год премьеры')
     description = models.TextField(verbose_name = 'Описание')
+    film = models.FileField(verbose_name = 'Фильмы', upload_to = file_validator, validators = [video_validator], blank = True)
     actors = models.ManyToManyField('Actor', verbose_name = 'Актеры', related_name = 'films', blank = True)
     genres = models.ManyToManyField('Genre', verbose_name = 'Жанры', related_name = 'films', blank = True)
     average_rating = models.FloatField(verbose_name = 'Средняя оценка', blank = True, null = True)
@@ -57,6 +58,7 @@ class Comment(models.Model):
     class Meta:
         verbose_name = 'Комментарий'
         verbose_name_plural = 'Комментарии'
+        ordering = ('-date_create',)
 
 class Rating(models.Model):
     GRADES = ((1, 1), (2, 2), (3, 3), (4, 4), (5, 5),
@@ -79,9 +81,19 @@ class Rating(models.Model):
         super().save()
         self.update_average_rating()
 
+    def delete(self, *args, **kwargs):
+        super().delete()
+        self.update_average_rating()
+
     def update_average_rating(self):
         grades = [grade.grade for grade in self.film.grades.all()]
-        average_rating = round(sum(grades) / len(grades), 2)
+
+        if not grades:
+            self.film.average_rating = None
+            self.film.save()        
+            return
+
+        average_rating = round(sum(grades) / len(grades), 1)
         self.film.average_rating = average_rating
         self.film.save()
         

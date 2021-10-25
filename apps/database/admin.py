@@ -34,3 +34,9 @@ class RatingAdmin(admin.ModelAdmin):
     search_fields = ('film__title', 'ip', 'grade')
     list_filter = ('grade',)
 
+    def delete_queryset(self, request, queryset):
+        # Because queryset is deleted by another method
+        for model in queryset:
+            model.delete()
+
+

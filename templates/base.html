@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <title>{% block title %}Фильмы{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <a href="/"><h3>Фильмы</h3></a>
+        <form>
+            {% csrf_token %}
+            <input class="search-film" name="search-film" placeholder="Поиск фильма" spellcheck="false">
+            <input type="submit" class="search-submit" value="&#128270">
+        </form>
+    </header>
+    <div class="container-recommendations">
+        {% for film in recom_films %}
+            <a href="{% url 'film' film.id %}">
+                <div class="container-recommendations-film">
+                    <div class="film-banner" style="background-image: url('{{film.banner.url}}');"></div>
+                    <div class="film-title">
+                        <h4 style="word-wrap: break-word; text-align: center; font-weight: normal;">{{film.title}}</h4>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+    <div class="container-content">
+        {% block content %}
+        {% endblock %}
+        <div class="container-genres">
+            <h2 style="margin: 5%;">Жанры</h2>
+            {% for genre in all_genres %}
+                <a href="" class="genres" style="background-color: {{genre.color}}2F;">{{genre.title}}</a>
+            {% endfor %}
+        </div>
+    </div>
+    <footer>
+        <a href="https://github.com/QuantumaStelata" target="_blank">
+            <p style="font-size: 12px;">Created by QuantumaStelata</p>
+        </a>
+        <div>
+            <a href="{% url 'api' %}">
+                <p style="font-size: 12px; margin-right: 10px;">API</p>
+            </a>
+            {% if user.is_superuser %}
+                <a href="{% url 'admin:index' %}">
+                    <p style="font-size: 12px;">ADMIN</p>
+                </a>
+            {% endif %}
+        </div>
+    </footer>
+</body>
+</html>

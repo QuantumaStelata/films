@@ -4,7 +4,7 @@ from .views import ApiViewSet, \
                    FilmsViewSet, FilmDetailViewSet, \
                    GenresViewSet, GenreDetailViewSet, \
                    ActorsViewSet, ActorDetailViewSet, \
-                   RatingViewSet
+                   RatingViewSet, CommentViewSet
 
 urlpatterns = [
     path('', ApiViewSet.as_view(), name='api'),
@@ -18,5 +18,6 @@ urlpatterns = [
     path('actors/', ActorsViewSet.as_view(), name='api-actors'),
     path('actors/<str:pk>/', ActorDetailViewSet.as_view(), name='api-actors-detail'),
 
-    path('rating/<str:pk_film>/', RatingViewSet.as_view(), name='api-rating'),
+    path('ratings/', RatingViewSet.as_view(), name='api-rating'),
+    path('comments/', CommentViewSet.as_view(), name='api-comment'),
 ]
