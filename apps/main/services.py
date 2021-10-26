@@ -1,4 +1,4 @@
-from apps.database.models import Film, Genre
+from apps.database.models import Film, Genre, Actor
 
 from django.template.defaulttags import register
 
@@ -28,6 +28,21 @@ def get_count_off_stars(value):
 
     return range(int(value) + 1, 10 + 1)
 
+def search(request):
+    search = request.POST.get('search-film')
+    films = Film.objects.filter(title__icontains = search, is_delete = False)
+    genres = Genre.objects.filter(title__icontains = search)
+    actors = Actor.objects.filter(name__in = search.split(), surname__in = search.split())
+
+    all_films = films
+    if genres:
+        for genre in genres:
+            all_films = all_films | genre.films.all() # Дополнение без дубликатов (см. док. Django об объединении Queryset`ов)
+    if actors:
+        for actor in actors:
+            all_films = all_films | actor.films.all() # Дополнение без дубликатов (см. док. Django об объединении Queryset`ов)
+
+    return {'films': all_films}
 
 def get_recommendations_films(count = 5):
     ''' Use **get_recommendations_films() in renders kwargs'''

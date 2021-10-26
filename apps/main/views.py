@@ -1,4 +1,3 @@
-from django.http.response import HttpResponse
 from django.shortcuts import render
 from django.views import View
 from django.shortcuts import get_object_or_404
@@ -10,6 +9,8 @@ class MainView(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'main/main.html', {**get_recommendations_films(), **get_new_films(), **get_all_genres()})
 
+    def post(self, request, *args, **kwargs):
+        return render(request, 'main/main.html', {**search(request), 'search': True, **get_recommendations_films(), **get_all_genres()})
 
 class FilmView(View):
     def get(self, request, pk, *args, **kwargs):

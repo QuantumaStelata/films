@@ -5,7 +5,7 @@ from .models import *
 
 @admin.register(Film)
 class FilmAdmin(admin.ModelAdmin):
-    list_display = ('title', 'average_rating', 'date_create')
+    list_display = ('title', 'average_rating', 'date_create', 'is_delete')
     readonly_fields = ('average_rating', 'date_create')
     filter_horizontal = ('actors', 'genres')
     search_fields = ('title', 'genres__title', 'actors__name', 'actors__surname')
