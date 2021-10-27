@@ -1,0 +1,182 @@
+[
+    {
+        "model": "database.Film",
+        "pk": 1,
+        "fields": {
+            "title": "Фильм",
+            "banner": "films/Фильм/term1.jpg",
+            "year": 2021,
+            "description": "Фильм",
+            "film": "films/Фильм/yt5s.com-Big_Baby_Tape_ft._Kizaru_-_BABY_WALKER_Prod._by_DJ_Tape_Слив_Склейка.mp4",
+            "date_create": "2013-03-16T17:41:28+00:00"
+        }
+    },
+    {
+        "model": "database.Film",
+        "pk": 2,
+        "fields": {
+            "title": "Фильм",
+            "banner": "films/Фильм/term1.jpg",
+            "year": 2021,
+            "description": "Фильм",
+            "film": "films/Фильм/yt5s.com-Big_Baby_Tape_ft._Kizaru_-_BABY_WALKER_Prod._by_DJ_Tape_Слив_Склейка.mp4",
+            "date_create": "2013-03-16T17:41:28+00:00"
+        }
+    },
+    {
+        "model": "database.Film",
+        "pk": 3,
+        "fields": {
+            "title": "Фильм",
+            "banner": "films/Фильм/term1.jpg",
+            "year": 2021,
+            "description": "Фильм",
+            "film": "films/Фильм/yt5s.com-Big_Baby_Tape_ft._Kizaru_-_BABY_WALKER_Prod._by_DJ_Tape_Слив_Склейка.mp4",
+            "date_create": "2013-03-16T17:41:28+00:00"
+        }
+    },
+    {
+        "model": "database.Film",
+        "pk": 4,
+        "fields": {
+            "title": "Фильм",
+            "banner": "films/Фильм/term1.jpg",
+            "year": 2021,
+            "description": "Фильм",
+            "film": "films/Фильм/yt5s.com-Big_Baby_Tape_ft._Kizaru_-_BABY_WALKER_Prod._by_DJ_Tape_Слив_Склейка.mp4",
+            "date_create": "2013-03-16T17:41:28+00:00"
+        }
+    },
+    {
+        "model": "database.Film",
+        "pk": 5,
+        "fields": {
+            "title": "Фильм",
+            "banner": "films/Фильм/term1.jpg",
+            "year": 2021,
+            "description": "Фильм",
+            "film": "films/Фильм/yt5s.com-Big_Baby_Tape_ft._Kizaru_-_BABY_WALKER_Prod._by_DJ_Tape_Слив_Склейка.mp4",
+            "date_create": "2013-03-16T17:41:28+00:00"
+        }
+    },
+    {
+        "model": "database.Film",
+        "pk": 6,
+        "fields": {
+            "title": "Фильм",
+            "banner": "films/Фильм/term1.jpg",
+            "year": 2021,
+            "description": "Фильм",
+            "film": "films/Фильм/yt5s.com-Big_Baby_Tape_ft._Kizaru_-_BABY_WALKER_Prod._by_DJ_Tape_Слив_Склейка.mp4",
+            "date_create": "2013-03-16T17:41:28+00:00"
+        }
+    },
+    {
+        "model": "database.Film",
+        "pk": 7,
+        "fields": {
+            "title": "Фильм",
+            "banner": "films/Фильм/term1.jpg",
+            "year": 2021,
+            "description": "Фильм",
+            "film": "films/Фильм/yt5s.com-Big_Baby_Tape_ft._Kizaru_-_BABY_WALKER_Prod._by_DJ_Tape_Слив_Склейка.mp4",
+            "date_create": "2013-03-16T17:41:28+00:00"
+        }
+    },
+    {
+        "model": "database.Film",
+        "pk": 8,
+        "fields": {
+            "title": "Фильм",
+            "banner": "films/Фильм/term1.jpg",
+            "year": 2021,
+            "description": "Фильм",
+            "film": "films/Фильм/yt5s.com-Big_Baby_Tape_ft._Kizaru_-_BABY_WALKER_Prod._by_DJ_Tape_Слив_Склейка.mp4",
+            "date_create": "2013-03-16T17:41:28+00:00"
+        }
+    },
+    {
+        "model": "database.Film",
+        "pk": 9,
+        "fields": {
+            "title": "Фильм",
+            "banner": "films/Фильм/term1.jpg",
+            "year": 2021,
+            "description": "Фильм",
+            "film": "films/Фильм/yt5s.com-Big_Baby_Tape_ft._Kizaru_-_BABY_WALKER_Prod._by_DJ_Tape_Слив_Склейка.mp4",
+            "date_create": "2013-03-16T17:41:28+00:00"
+        }
+    },
+    {
+        "model": "database.Film",
+        "pk": 10,
+        "fields": {
+            "title": "Фильм",
+            "banner": "films/Фильм/term1.jpg",
+            "year": 2021,
+            "description": "Фильм",
+            "film": "films/Фильм/yt5s.com-Big_Baby_Tape_ft._Kizaru_-_BABY_WALKER_Prod._by_DJ_Tape_Слив_Склейка.mp4",
+            "date_create": "2013-03-16T17:41:28+00:00"
+        }
+    },
+    {
+        "model": "database.Film",
+        "pk": 11,
+        "fields": {
+            "title": "Фильм",
+            "banner": "films/Фильм/term1.jpg",
+            "year": 2021,
+            "description": "Фильм",
+            "film": "films/Фильм/yt5s.com-Big_Baby_Tape_ft._Kizaru_-_BABY_WALKER_Prod._by_DJ_Tape_Слив_Склейка.mp4",
+            "date_create": "2013-03-16T17:41:28+00:00"
+        }
+    },
+    {
+        "model": "database.Film",
+        "pk": 12,
+        "fields": {
+            "title": "Фильм",
+            "banner": "films/Фильм/term1.jpg",
+            "year": 2021,
+            "description": "Фильм",
+            "film": "films/Фильм/yt5s.com-Big_Baby_Tape_ft._Kizaru_-_BABY_WALKER_Prod._by_DJ_Tape_Слив_Склейка.mp4",
+            "date_create": "2013-03-16T17:41:28+00:00"
+        }
+    },
+    {
+        "model": "database.Film",
+        "pk": 13,
+        "fields": {
+            "title": "Фильм",
+            "banner": "films/Фильм/term1.jpg",
+            "year": 2021,
+            "description": "Фильм",
+            "film": "films/Фильм/yt5s.com-Big_Baby_Tape_ft._Kizaru_-_BABY_WALKER_Prod._by_DJ_Tape_Слив_Склейка.mp4",
+            "date_create": "2013-03-16T17:41:28+00:00"
+        }
+    },
+    {
+        "model": "database.Film",
+        "pk": 14,
+        "fields": {
+            "title": "Фильм",
+            "banner": "films/Фильм/term1.jpg",
+            "year": 2021,
+            "description": "Фильм",
+            "film": "films/Фильм/yt5s.com-Big_Baby_Tape_ft._Kizaru_-_BABY_WALKER_Prod._by_DJ_Tape_Слив_Склейка.mp4",
+            "date_create": "2013-03-16T17:41:28+00:00"
+        }
+    },
+    {
+        "model": "database.Film",
+        "pk": 15,
+        "fields": {
+            "title": "Фильм",
+            "banner": "films/Фильм/term1.jpg",
+            "year": 2021,
+            "description": "Фильм",
+            "film": "films/Фильм/yt5s.com-Big_Baby_Tape_ft._Kizaru_-_BABY_WALKER_Prod._by_DJ_Tape_Слив_Склейка.mp4",
+            "date_create": "2013-03-16T17:41:28+00:00"
+        }
+    }
+]
