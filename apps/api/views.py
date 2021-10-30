@@ -1,3 +1,4 @@
+from os import stat
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -81,11 +82,11 @@ class RatingViewSet(APIView):
                 new_avarage_rating = film.average_rating
                 new_ratings_count = film.grades.all().count()
 
-                return Response({'status': 'ok', 'new_avarage_rating': new_avarage_rating, 'new_ratings_count': new_ratings_count})
+                return Response({'status': 'ok', 'new_avarage_rating': new_avarage_rating, 'new_ratings_count': new_ratings_count}, status = 200)
 
-            return Response({'status': 'error', 'message': 'grade less than 1 or more than 10'})
+            return Response({'status': 'error', 'message': 'grade less than 1 or more than 10'}, status = 400)
         
-        return Response({'status': 'error', 'message': 'grade not integer'})
+        return Response({'status': 'error', 'message': 'grade not integer'}, status = 400)
 
 class CommentViewSet(APIView):
     def post(self, request):
@@ -105,8 +106,8 @@ class CommentViewSet(APIView):
 
                 date_create = f"{get_date} {get_time}"
 
-                return Response({'status': 'ok', 'date_create': date_create})
+                return Response({'status': 'ok', 'date_create': date_create}, status = 200)
 
-            return Response({'status': 'error', 'message': 'length name or text is longer than 255 symbols'})
+            return Response({'status': 'error', 'message': 'length name or text is longer than 255 symbols'}, status = 400)
         
-        return Response({'status': 'error', 'message': 'not found name or text'})
+        return Response({'status': 'error', 'message': 'not found name or text'}, status = 400)
